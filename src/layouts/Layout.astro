@@ -1,4 +1,7 @@
 ---
+import Particles from "astro-particles";
+import { options } from "@/utils/particleOptions";
+
 interface Props {
   title: string;
 }
@@ -23,9 +26,35 @@ const { title } = Astro.props;
     />
   </head>
   <body>
-    <slot />
+    <div class="absolute">
+      <Particles id="tsparticles" options={options} init="particlesInit" loaded="particlesLoaded" />
+    </div>
+    <main class="h-screen max-w-screen-desktop mx-auto">
+      <slot />
+    </main>
   </body>
 </html>
+
+<script>
+  import { type Container, type Engine } from "tsparticles-engine";
+  import { loadFull } from "tsparticles";
+
+  declare global {
+    interface Window {
+      particlesInit: (engine: Engine) => Promise<void>;
+      particlesLoaded: (container: Container) => void;
+    }
+  }
+
+  window.particlesInit = async function (engine: Engine) {
+    await loadFull(engine);
+  };
+
+  window.particlesLoaded = function (container: Container) {
+    console.log("particles Loaded ");
+  };
+</script>
+
 <style is:global>
   :root {
     --background: #13151a;
@@ -35,5 +64,6 @@ const { title } = Astro.props;
     font-family: "Montserrat", sans-serif;
     background: var(--background);
     background-size: 224px;
+    color: #fff;
   }
 </style>
