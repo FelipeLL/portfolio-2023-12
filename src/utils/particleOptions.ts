@@ -74,11 +74,11 @@ export const options: ISourceOptions = {
       },
       options: {
         background: {
-          color: "#fff",
+          color: "#f1f5f9",
         },
         particles: {
           color: {
-            value: "#1e3050",
+            value: "#4e9ae3",
           },
           links: {
             color: "#1e3050",
