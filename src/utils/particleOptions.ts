@@ -65,5 +65,44 @@ export const options: ISourceOptions = {
       value: { min: 1, max: 5 },
     },
   },
+  themes: [
+    {
+      name: "light",
+      default: {
+        value: true,
+        mode: "light",
+      },
+      options: {
+        background: {
+          color: "#fff",
+        },
+        particles: {
+          color: {
+            value: "#1e3050",
+          },
+          links: {
+            color: "#1e3050",
+          },
+        },
+      },
+    },
+    {
+      name: "dark",
+      default: {
+        value: true,
+        mode: "dark",
+      },
+      options: {
+        background: {
+          color: "#1e3050",
+        },
+        particles: {
+          color: {
+            value: "#fff",
+          },
+        },
+      },
+    },
+  ],
   detectRetina: true,
 };

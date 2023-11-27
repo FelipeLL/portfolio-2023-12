@@ -25,5 +25,6 @@ export default {
       ...defaultTheme.screens,
     },
   },
-  plugins: [],
+  darkMode: "class",
+  plugins: [require("flowbite/plugin")],
 };

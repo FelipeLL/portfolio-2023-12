@@ -6,13 +6,34 @@ import LinkedinIcon from "@/icons/Linkedin.astro";
 import TwitterIcon from "@/icons/Twitter.astro";
 import ResumeIcon from "@/icons/Resume.astro";
 
-const iconList = [GithubIcon, InstagramIcon, LinkedinIcon, TwitterIcon];
+const iconList = [
+  {
+    icon: GithubIcon,
+    url: "https://github.com/FelipeLL",
+  },
+  {
+    icon: InstagramIcon,
+    url: "#",
+  },
+  {
+    icon: LinkedinIcon,
+    url: "https://www.linkedin.com/in/jfelipeladino/",
+  },
+  {
+    icon: TwitterIcon,
+    url: "#",
+  },
+];
 ---
 
 <Layout title="Felipe L.">
   <div class="flex justify-center items-center h-full">
     <div class="flex flex-col items-center">
-      <img src="/profile.webp" alt="Imagen de perfil" class="w-32 mb-8" />
+      <img
+        src="/profile.webp"
+        alt="Imagen de perfil"
+        class="w-32 xl:w-36 mb-8"
+      />
       <h1 class="mb-4 text-4xl xl:text-5xl font-bold">Felipe Ladino</h1>
       <p class="mb-8 text-lg">
         I'm a Systems Engineer passionate about software development
@@ -20,8 +41,10 @@ const iconList = [GithubIcon, InstagramIcon, LinkedinIcon, TwitterIcon];
 
       <div class="flex gap-x-8 mb-8">
         {
-          iconList.map((Icon) => (
-            <Icon className="w-7 h-7 hover:text-custom-blue-400 hover:scale-150 cursor-pointer transition duration-300 ease-in" />
+          iconList.map((item) => (
+            <a href={item.url} target="_blank">
+              <item.icon className="w-7 h-7 hover:text-custom-blue-400 hover:scale-150 cursor-pointer transition duration-300 ease-in" />
+            </a>
           ))
         }
       </div>
