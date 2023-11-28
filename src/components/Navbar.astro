@@ -1,0 +1,59 @@
+---
+import { ToggleTheme } from "@/components/ToggleTheme";
+---
+
+<header
+  id="landing-header"
+  class="top-0 flex justify-between items-center w-full h-[72px] px-3 rounded"
+>
+  <div class="flex items-center gap-4 flex-1">
+    <div class="p-1 rounded-full bg-slate-50">
+      <img src="/profile.webp" alt="imagen de perfil" class="w-10 h-10" />
+    </div>
+    <p class="text-xl font-medium">FelipeLL</p>
+  </div>
+
+  <nav>
+    <ul class="flex">
+      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
+        <a href="/">Home</a>
+      </li>
+      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
+        <a href="/">Experience</a>
+      </li>
+      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
+        <a href="/">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <ToggleTheme client:only />
+
+  <div
+    id="menu-backdrop"
+    class="absolute bg-custom-blue-500/90 rounded left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] opacity-0 transition-all duration-500 ease-in-out -z-10"
+  >
+  </div>
+</header>
+
+<script>
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackdrop = document.querySelector("#menu-backdrop") as HTMLElement;
+  listItem.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+
+      menuBackdrop.style.setProperty("--left", `${left}px`);
+      menuBackdrop.style.setProperty("--top", `${top}px`);
+      menuBackdrop.style.setProperty("--width", `${width}px`);
+      menuBackdrop.style.setProperty("--height", `${height}px`);
+      menuBackdrop.style.opacity = "1";
+      menuBackdrop.style.visibility = "visible";
+    });
+
+    item.addEventListener("mouseleave", () => {
+      menuBackdrop.style.opacity = "0";
+      menuBackdrop.style.visibility = "hidden";
+    });
+  });
+</script>

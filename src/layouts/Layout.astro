@@ -1,6 +1,6 @@
 ---
 import { Cover } from "@/components/Cover";
-import { ToggleTheme } from "@/components/ToggleTheme";
+import Navbar from "@/components/Navbar.astro";
 
 interface Props {
   title: string;
@@ -28,9 +28,10 @@ const { title } = Astro.props;
   <body>
     <Cover client:only />
     <main
-      class="h-screen max-w-screen-desktop mx-auto dark:text-white transition duration-100"
+      class="flex flex-col h-screen max-w-screen-desktop mx-auto dark:text-white transition duration-100"
     >
-      <ToggleTheme client:only />
+      <Navbar />
+      <!-- <ToggleTheme client:only /> -->
       <slot />
     </main>
   </body>

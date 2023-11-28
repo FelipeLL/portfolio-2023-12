@@ -3,7 +3,7 @@ import type { ISourceOptions } from "tsparticles-engine";
 export const options: ISourceOptions = {
   fps_limit: 120,
   fullScreen: {
-    zIndex: -1,
+    zIndex: -100,
   },
   interactivity: {
     events: {
