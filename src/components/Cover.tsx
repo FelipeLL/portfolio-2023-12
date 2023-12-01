@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
-import { options } from "@/utils/particleOptions";
 import { useThemeStore } from "@/stores/theme";
+import { options } from "@/utils/particleOptions";
 import { type Container, type Engine } from "tsparticles-engine";
 
 export const Cover = () => {

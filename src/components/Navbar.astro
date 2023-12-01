@@ -1,5 +1,22 @@
 ---
 import { ToggleTheme } from "@/components/ToggleTheme";
+
+const { pathname } = Astro.url;
+
+const routes = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+  {
+    name: "Contact me",
+    path: "/contact-me",
+  },
+];
 ---
 
 <header
@@ -15,15 +32,17 @@ import { ToggleTheme } from "@/components/ToggleTheme";
 
   <nav>
     <ul class="flex">
-      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
-        <a href="/">Home</a>
-      </li>
-      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
-        <a href="/">Experience</a>
-      </li>
-      <li class="py-1 px-4 font-semibold hover:text-white hover:duration-1000">
-        <a href="/">Contact</a>
-      </li>
+      {
+        routes.map((route) => (
+          <li
+            class={`py-1 px-4 font-semibold rounded hover:text-white hover:duration-1000 ${
+              pathname === route.path && "bg-custom-blue-500/90 text-white"
+            }`}
+          >
+            <a href={route.path}>{route.name}</a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 
@@ -31,7 +50,7 @@ import { ToggleTheme } from "@/components/ToggleTheme";
 
   <div
     id="menu-backdrop"
-    class="absolute bg-custom-blue-500/90 rounded left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] opacity-0 transition-all duration-500 ease-in-out -z-10"
+    class="absolute bg-custom-blue-500/90 left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] opacity-0 transition-all duration-500 ease-in-out -z-10"
   >
   </div>
 </header>
@@ -42,6 +61,10 @@ import { ToggleTheme } from "@/components/ToggleTheme";
   listItem.forEach((item) => {
     item.addEventListener("mouseenter", () => {
       const { left, top, width, height } = item.getBoundingClientRect();
+
+      listItem.forEach((item) => {
+        item.classList.remove("rounded");
+      });
 
       menuBackdrop.style.setProperty("--left", `${left}px`);
       menuBackdrop.style.setProperty("--top", `${top}px`);
@@ -54,6 +77,10 @@ import { ToggleTheme } from "@/components/ToggleTheme";
     item.addEventListener("mouseleave", () => {
       menuBackdrop.style.opacity = "0";
       menuBackdrop.style.visibility = "hidden";
+
+      listItem.forEach((item) => {
+        item.classList.add("rounded");
+      });
     });
   });
 </script>

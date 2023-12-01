@@ -5,19 +5,12 @@ export const ToggleTheme = () => {
   const { theme, setTheme } = useThemeStore((state) => state);
 
   useEffect(() => {
-    switch (theme) {
-      case "light":
-        document.body.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-        break;
-      case "dark":
-        document.body.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-        break;
-      default:
-        localStorage.removeItem("theme");
-        break;
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   return (

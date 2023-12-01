@@ -5,6 +5,7 @@ export const options: ISourceOptions = {
   fullScreen: {
     zIndex: -100,
   },
+
   interactivity: {
     events: {
       onClick: {
@@ -89,7 +90,7 @@ export const options: ISourceOptions = {
     {
       name: "dark",
       default: {
-        value: true,
+        value: false,
         mode: "dark",
       },
       options: {
