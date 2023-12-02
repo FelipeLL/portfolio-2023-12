@@ -1,101 +1,40 @@
 ---
 import Badge from "./Badge.astro";
 import Bag from "@/icons/Bag.astro";
+import { jobs } from "@/utils/consts";
 ---
 
 <ol class="relative border-s border-gray-200 dark:border-gray-700">
-  <li class="mb-10 ms-6">
-    <span
-      class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-custom-blue-500 dark:ring-custom-blue-500 dark:bg-blue-900"
-    >
-      <Bag />
-    </span>
-    <h3
-      class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white"
-    >
-      Let's Do it Now <span
-        class="bg-blue-200 text-custom-blue-950 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-custom-blue-600 dark:text-white ms-3"
-        >Current</span
-      >
-    </h3>
-    <time
-      class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-slate-400"
-      >July 2023</time
-    >
-    <p class="mb-4 text-base font-normal text-gray-500 dark:text-slate-300">
-      Development of ERP-oriented applications.
-    </p>
+  {
+    jobs.map((job, index) => (
+      <li class={`ms-6 ${index !== jobs.length - 1 && "mb-10 "}`}>
+        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-custom-blue-400 dark:ring-custom-blue-500 dark:bg-blue-900">
+          <Bag />
+        </span>
+        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+          {job.title}
+          {job.current && (
+            <span class="bg-custom-blue-400 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-custom-blue-600 dark:text-white ms-3">
+              Current
+            </span>
+          )}
+        </h3>
+        <time class="block mb-2 text-sm font-normal leading-none text-slate-700 dark:text-slate-400">
+          {job.date}
+        </time>
+        <p class="mb-4 text-base font-normal text-slate-600 dark:text-slate-300">
+          {job.description}
+        </p>
 
-    <ul class="ml-6 mb-4 list-disc">
-      <li class="mb-1">
-        SCRUM as an agile methodology to manage project development
+        <ul class="ml-6 mb-4 list-disc">
+          {job.activities?.map((activity) => (
+            <li class="mb-1">{activity}</li>
+          ))}
+        </ul>
+        {job.badges.map((badge) => (
+          <Badge label={badge} />
+        ))}
       </li>
-      <li class="mb-1">
-        Create user interfaces with application logic for effective interaction
-      </li>
-      <li>
-        Coordinate and execute software deployments to production environments
-      </li>
-    </ul>
-    <Badge label="Vue" />
-    <Badge label="TypeScript" />
-    <Badge label="Javascript" />
-    <Badge label="CSS" />
-  </li>
-  <li class="mb-10 ms-6">
-    <span
-      class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-custom-blue-500 dark:ring-custom-blue-500 dark:bg-blue-900"
-    >
-      <Bag />
-    </span>
-    <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-      Un Toque Digital
-    </h3>
-    <time
-      class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-slate-400"
-      >December 2022 - June 2023</time
-    >
-    <p class="mb-4 text-base font-normal text-gray-500 dark:text-slate-300">
-      Creation and maintenance of platforms and web pages.
-    </p>
-    <ul class="ml-6 mb-4 list-disc">
-      <li class="mb-1">
-        Deployment to production on EC2 AWS servers and Nginx
-      </li>
-      <li class="mb-1">Software as a Service (SaaS) design</li>
-      <li class="mb-1">
-        SCRUM as an agile methodology and Trello tool to manage project
-        development
-      </li>
-    </ul>
-    <Badge label="React" />
-    <Badge label="Angular" />
-    <Badge label="Node.js" />
-    <Badge label="AWS" />
-    <Badge label="Nginx" />
-    <Badge label="MongoDB" />
-  </li>
-  <li class="ms-6">
-    <span
-      class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-custom-blue-500 dark:ring-custom-blue-500 dark:bg-blue-900"
-    >
-      <Bag />
-    </span>
-    <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
-      Fusagasugá Mayor's Office
-    </h3>
-    <time
-      class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-slate-400"
-      >January 2022 - June 2022</time
-    >
-    <p class="mb-4 text-base font-normal text-gray-500 dark:text-slate-300">
-      Development and implementation of a management of trees with
-      georeferencing application in the municipality of Fusagasugá,
-      Cundinamarca.
-    </p>
-    <Badge label="PHP" />
-    <Badge label="Laravel" />
-    <Badge label="MySQL" />
-    <Badge label="Javascript" />
-  </li>
+    ))
+  }
 </ol>
