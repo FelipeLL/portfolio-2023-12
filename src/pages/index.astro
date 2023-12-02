@@ -1,33 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GithubIcon from "@/icons/Github.astro";
-import InstagramIcon from "@/icons/Instagram.astro";
-import LinkedinIcon from "@/icons/Linkedin.astro";
-import TwitterIcon from "@/icons/Twitter.astro";
 import ResumeIcon from "@/icons/Resume.astro";
-
-const iconList = [
-  {
-    icon: GithubIcon,
-    url: "https://github.com/FelipeLL",
-  },
-  {
-    icon: InstagramIcon,
-    url: "#",
-  },
-  {
-    icon: LinkedinIcon,
-    url: "https://www.linkedin.com/in/jfelipeladino/",
-  },
-  {
-    icon: TwitterIcon,
-    url: "#",
-  },
-];
+import { Cover } from "@/components/Cover";
+import { iconList } from "@/utils/consts";
 ---
 
+<Cover client:only />
 <Layout title="Felipe L.">
-  <div class="flex justify-center items-center grow">
+  <section class="flex justify-center items-center grow">
     <div class="flex flex-col items-center">
       <img
         src="/profile.webp"
@@ -50,13 +30,13 @@ const iconList = [
       </div>
 
       <button
-        class="flex items-center gap-2 py-3 px-10 rounded-full font-bold bg-custom-blue-500 hover:bg-custom-blue-600 text-white"
+        class="flex items-center gap-2 py-3 px-10 rounded-full font-bold bg-custom-blue-500 dark:bg-custom-blue-600/90 hover:bg-custom-blue-600 dark:hover:bg-custom-blue-700/90 text-white"
       >
         <ResumeIcon />
          Resume
       </button>
     </div>
-  </div>
+  </section>
 </Layout>
 
 <style></style>
