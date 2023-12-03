@@ -8,9 +8,14 @@ import { iconList } from "@/utils/consts";
   <section class="grid grid-cols-2 w-full mt-10">
     <div class="flex flex-col justify-between">
       <div class="">
-        <h1 class="mb-3 text-4xl xl:text-5xl font-bold">Felipe Ladino</h1>
+        <h2 class="mb-3 text-4xl xl:text-5xl font-bold" transition:name="title">
+          Felipe Ladino
+        </h2>
         <h3 class="mb-5 text-xl font-medium">Experienced Back-End Engineer</h3>
-        <p class="mb-16 max-w-sm text-slate-300">
+        <p
+          class="mb-16 max-w-sm text-slate-500 dark:text-slate-300"
+          transition:name="description"
+        >
           I'm a Systems Engineer passionate about software development
         </p>
 
@@ -45,7 +50,7 @@ import { iconList } from "@/utils/consts";
           </ul>
         </div>
       </div>
-      <div class="flex gap-x-4 pb-24">
+      <div class="flex gap-x-4 pb-24" transition:name="social_icons">
         {
           iconList.map((item) => (
             <a href={item.url} target="_blank">

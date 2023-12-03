@@ -14,12 +14,14 @@ import { iconList } from "@/utils/consts";
         alt="Imagen de perfil"
         class="w-32 xl:w-36 mb-8"
       />
-      <h1 class="mb-4 text-4xl xl:text-5xl font-bold">Felipe Ladino</h1>
-      <p class="mb-8 text-lg">
+      <h1 class="mb-4 text-4xl xl:text-5xl font-bold" transition:name="title">
+        Felipe Ladino
+      </h1>
+      <p class="mb-8 text-lg" transition:name="description">
         I'm a Systems Engineer passionate about software development
       </p>
 
-      <div class="flex gap-x-8 mb-8">
+      <div class="flex gap-x-8 mb-8" transition:name="social_icons">
         {
           iconList.map((item) => (
             <a href={item.url} target="_blank">
