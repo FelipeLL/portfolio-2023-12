@@ -22,6 +22,7 @@ export default {
       },
     },
     screens: {
+      tablet: "950px",
       desktop: "1152px",
       ...defaultTheme.screens,
     },

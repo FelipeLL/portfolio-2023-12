@@ -5,8 +5,8 @@ import { iconList } from "@/utils/consts";
 ---
 
 <Layout title="About me.">
-  <section class="grid grid-cols-2 h-full w-full mt-10">
-    <div class="flex flex-col justify-between">
+  <section class="grid grid-cols-2 items-start w-full">
+    <div class="flex flex-col justify-between top-0 sticky h-[90vh] pt-10">
       <div class="">
         <h2 class="mb-3 text-4xl md:text-5xl font-bold" transition:name="title">
           Felipe Ladino
@@ -50,7 +50,10 @@ import { iconList } from "@/utils/consts";
           </ul>
         </div>
       </div>
-      <div class="flex gap-x-4 pb-20" transition:name="social_icons">
+      <div
+        class="flex gap-x-4 tablet:pb-10 lg:pb-14 xl:pb-20"
+        transition:name="social_icons"
+      >
         {
           iconList.map((item) => (
             <a href={item.url} target="_blank">
@@ -60,7 +63,7 @@ import { iconList } from "@/utils/consts";
         }
       </div>
     </div>
-    <div class="">
+    <div class="pt-10">
       <Timeline />
     </div>
   </section>
