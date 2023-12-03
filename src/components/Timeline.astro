@@ -31,9 +31,11 @@ import { jobs } from "@/utils/consts";
             <li class="mb-1">{activity}</li>
           ))}
         </ul>
-        {job.badges.map((badge) => (
-          <Badge label={badge} />
-        ))}
+        <div class="flex flex-wrap gap-2 ">
+          {job.badges.map((badge) => (
+            <Badge label={badge} />
+          ))}
+        </div>
       </li>
     ))
   }
