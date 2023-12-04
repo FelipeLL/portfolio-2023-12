@@ -1,5 +1,6 @@
 ---
 import { ToggleTheme } from "@/components/ToggleTheme";
+import Menu from "@/icons/Menu.astro";
 
 const { pathname } = Astro.url;
 
@@ -30,28 +31,51 @@ const routes = [
     <p class="text-xl font-medium">FelipeLL</p>
   </div>
 
-  <nav>
-    <ul class="flex">
+  <nav
+    id="navbar"
+    class="absolute hidden md:block right-5 top-[70px] w-80 sm:w-3/5 md:w-auto md:static z-50"
+  >
+    <ul
+      class="md:flex p-4 md:p-0 rounded-md md:rounded-none border border-slate-600 dark:border-slate-100 md:border-none bg-slate-200 dark:bg-custom-blue-950 md:bg-transparent z-50"
+    >
       {
         routes.map((route) => (
           <li
-            class={`py-1 px-4 font-semibold rounded hover:text-white hover:duration-1000 cursor-pointer ${
+            class={`py-1.5 md:py-1 px-4 text-lg md:text-base font-semibold rounded md:hover:text-white hover:duration-1000 cursor-pointer ${
               pathname === route.path &&
               "bg-custom-blue-500/90 dark:bg-custom-blue-600/90 text-white"
             }`}
           >
-            <a href={route.path}>{route.name}</a>
+            <a
+              href={route.path}
+              class="w-full md:w-auto inline-block md:inline"
+            >
+              {route.name}
+            </a>
           </li>
         ))
       }
     </ul>
   </nav>
 
-  <ToggleTheme client:only />
+  <div class="flex justify-end items-center gap-x-6 flex-1">
+    <ToggleTheme client:only />
+
+    <button
+      type="button"
+      data-collapse-toggle="navbar"
+      aria-expanded="false"
+      aria-controls="navbar"
+    >
+      <Menu
+        className="cursor-pointer text-custom-blue-600 dark:text-white md:hidden"
+      />
+    </button>
+  </div>
 
   <div
     id="menu-backdrop"
-    class="absolute bg-custom-blue-500/90 dark:bg-custom-blue-600/90 left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] opacity-0 transition-all duration-500 ease-in-out -z-10"
+    class="absolute hidden md:block bg-custom-blue-500/90 dark:bg-custom-blue-600/90 left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] opacity-0 transition-all duration-500 ease-in-out -z-10"
   >
   </div>
 </header>
@@ -60,4 +84,19 @@ const routes = [
   import { navbarBackdrop } from "@/utils/navbar-backdrop";
 
   document.addEventListener("astro:page-load", navbarBackdrop, { once: false });
+</script>
+
+<script>
+  const toggleNavbar = () => {
+    const toggleButton = document.querySelector("[data-collapse-toggle]");
+
+    const navbar = document.getElementById("navbar");
+
+    toggleButton?.addEventListener("click", () => {
+      navbar?.classList.toggle("hidden");
+    });
+  };
+
+  // document.addEventListener("DOMContentLoaded", toggleNavbar);
+  document.addEventListener("astro:page-load", toggleNavbar, { once: false });
 </script>

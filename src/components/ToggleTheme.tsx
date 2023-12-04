@@ -14,7 +14,7 @@ export const ToggleTheme = () => {
   }, [theme]);
 
   return (
-    <div className="flex justify-end flex-1">
+    <div className="">
       {
         <img
           src={theme === "dark" ? "/moon.svg" : "sun.svg"}
