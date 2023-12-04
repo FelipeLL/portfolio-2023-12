@@ -4,7 +4,7 @@ import Bag from "@/icons/Bag.astro";
 import { jobs } from "@/utils/consts";
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700">
+<ol class="relative mx-4 border-s border-gray-200 dark:border-gray-700">
   {
     jobs.map((job, index) => (
       <li class={`ms-6 ${index !== jobs.length - 1 && "mb-10 "}`}>

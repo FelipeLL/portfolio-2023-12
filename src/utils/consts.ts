@@ -29,7 +29,7 @@ export const jobs: Job[] = [
     date: "July 2023",
     description: "Development of ERP-oriented applications.",
     activities: [
-      "SCRUM as an agile methodology to manage project development",
+      "SCRUM as an agile methodology to manage project",
       "Create user interfaces with application logic for effective interaction",
       "Coordinate and execute software deployments to production environments",
     ],
@@ -43,15 +43,32 @@ export const jobs: Job[] = [
     activities: [
       "Deployment to production on EC2 AWS servers and Nginx",
       "Software as a Service (SaaS) design",
-      "SCRUM as an agile methodology and Trello tool to manage project development",
     ],
-    badges: ["React", "Angular", "Node.js", "AWS", "Nginx", "MongoDB", "MySQL"],
+    badges: ["React", "Node.js", "AWS", "Nginx", "MongoDB", "MySQL"],
   },
   {
     title: "Fusagasugá Mayor's Office",
     date: "January 2022 - June 2022",
     description:
-      "Development and implementation of a management of trees with georeferencing application in the municipality of Fusagasugá, Cundinamarca.",
+      "Development and implementation of a management of trees with georeferencing application ",
     badges: ["PHP", "Laravel", "MySQL", "Javascript"],
+  },
+];
+
+export const educationList = [
+  {
+    title: "Systems Engineer",
+    date: "2018 - 2022",
+    institution: "Universidad de Cundinamarca",
+  },
+  {
+    title: "Backend bootcamp",
+    date: "2022",
+    institution: "Sophos Solutions",
+  },
+  {
+    title: "Alkemy campus",
+    date: "2022",
+    institution: "Alkemy",
   },
 ];

@@ -1,19 +1,23 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Timeline from "@/components/Timeline.astro";
-import { iconList } from "@/utils/consts";
+import { iconList, educationList } from "@/utils/consts";
 ---
 
 <Layout title="About me.">
-  <section class="grid grid-cols-2 items-start w-full">
-    <div class="flex flex-col justify-between top-0 sticky h-[90vh] pt-10">
-      <div class="">
+  <section class="desktop-sm:grid desktop-sm:grid-cols-2 items-start w-full">
+    <div
+      class="flex flex-col desktop-sm:justify-between desktop-sm:top-0 desktop-sm:sticky desktop-sm:h-[90vh] pt-10"
+    >
+      <div class="mb-8 desktop-sm:mb-0">
         <h2 class="mb-3 text-4xl md:text-5xl font-bold" transition:name="title">
           Felipe Ladino
         </h2>
-        <h3 class="mb-5 text-xl font-medium">Experienced Back-End Engineer</h3>
+        <h3 class="mb-3 desktop-sm:mb-5 text-xl font-medium">
+          Experienced Back-End Engineer
+        </h3>
         <p
-          class="mb-16 max-w-sm text-slate-500 dark:text-slate-300"
+          class="mb-8 desktop-sm:mb-16 max-w-sm text-slate-500 dark:text-slate-300"
           transition:name="description"
         >
           I'm a Systems Engineer passionate about software development
@@ -22,48 +26,39 @@ import { iconList } from "@/utils/consts";
         <div>
           <h3 class="mb-4 text-xl font-medium">Education</h3>
           <ul class="list-disc list-inside">
-            <li class="mb-2 font-medium">
-              Systems Engineer
-              <p class="ml-6 text-base">
-                <span class="font-normal">2018 - 2022</span> | <span
-                  class="font-normal">Universidad de Cundinamarca</span
-                >
-              </p>
-            </li>
-            <li class="mb-2 font-medium">
-              Backend bootcamp
-              <p class="ml-6 text-base">
-                <span class="font-normal">2022</span> | <span
-                  class="font-normal">Sophos Solutions</span
-                >
-              </p>
-            </li>
-
-            <li class="font-medium">
-              Alkemy campus
-              <p class="ml-6 text-base">
-                <span class="font-normal">2022</span> | <span
-                  class="font-normal">Alkemy</span
-                >
-              </p>
-            </li>
+            {
+              educationList.map((item) => (
+                <li class="mb-2 font-medium">
+                  {item.title}
+                  <p class="ml-6 text-base">
+                    <span class="font-normal text-slate-700 dark:text-slate-400">
+                      {item.date} |
+                    </span>
+                    <span class="font-normal text-slate-600 dark:text-slate-300">
+                      {item.institution}
+                    </span>
+                  </p>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
       <div
-        class="flex gap-x-4 tablet:pb-10 lg:pb-14 xl:pb-20"
+        class="flex justify-center sm:justify-start gap-x-5 desktop-sm:pb-10 lg:pb-14 xl:pb-20"
         transition:name="social_icons"
       >
         {
           iconList.map((item) => (
             <a href={item.url} target="_blank">
-              <item.icon className="w-7 h-7 hover:text-custom-blue-500 dark:hover:text-custom-blue-400   cursor-pointer transition duration-300 ease-in" />
+              <item.icon className="w-8 h-8 hover:text-custom-blue-500 dark:hover:text-custom-blue-400 cursor-pointer transition duration-300 ease-in" />
             </a>
           ))
         }
       </div>
     </div>
-    <div class="pt-10">
+    <div class="pt-10 desktop-sm:mx-0">
+      <h3 class="mb-8 text-3xl md:text-4xl font-bold">Experience</h3>
       <Timeline />
     </div>
   </section>
