@@ -4,6 +4,12 @@ import Menu from "@/icons/Menu.astro";
 
 const { pathname } = Astro.url;
 
+let path = pathname;
+
+if (pathname[pathname.length - 1] === "/") {
+  path = pathname.slice(0, -1);
+}
+
 const routes = [
   {
     name: "Home",
@@ -42,7 +48,7 @@ const routes = [
         routes.map((route) => (
           <li
             class={`py-1.5 md:py-1 px-4 text-lg md:text-base font-semibold rounded md:hover:text-white hover:duration-1000 cursor-pointer ${
-              pathname === route.path &&
+              path === route.path &&
               "bg-custom-blue-500/90 dark:bg-custom-blue-600/90 text-white"
             }`}
           >
