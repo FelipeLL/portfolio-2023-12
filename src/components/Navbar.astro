@@ -22,7 +22,7 @@ const routes = [
 
 <header
   id="landing-header"
-  class="sticky top-0 flex justify-between items-center w-full px-5 min-h-[72px] backdrop-blur md:backdrop-blur-none shadow-md md:shadow-none z-40"
+  class="sticky top-0 flex justify-between items-center w-full px-5 min-h-[72px] transition duration-300 ease-in z-40"
 >
   <div class="flex items-center gap-4 flex-1">
     <div class="p-1 rounded-full bg-slate-50">
@@ -36,7 +36,7 @@ const routes = [
     class="absolute hidden md:block right-5 top-[70px] w-80 sm:w-3/5 md:w-auto md:static z-50"
   >
     <ul
-      class="md:flex p-4 md:p-0 rounded-md md:rounded-none border border-slate-600 dark:border-slate-100 md:border-none bg-slate-200 md:bg-transparent z-50"
+      class="md:flex p-4 md:p-0 rounded-md md:rounded-none border border-slate-600 dark:border-slate-400 md:border-none bg-slate-200 dark:bg-custom-blue-950 md:bg-transparent z-50"
     >
       {
         routes.map((route) => (
@@ -86,14 +86,35 @@ const routes = [
 <script>
   const toggleNavbar = () => {
     const toggleButton = document.querySelector("[data-collapse-toggle]");
-
     const navbar = document.getElementById("navbar");
 
     toggleButton?.addEventListener("click", () => {
       navbar?.classList.toggle("hidden");
+
+      const buttonClasses = [
+        "p-1",
+        "rounded",
+        "border",
+        "border-custom-blue-400",
+      ];
+
+      buttonClasses.forEach((className) => {
+        toggleButton.classList.toggle(className);
+      });
     });
   };
 
-  // document.addEventListener("DOMContentLoaded", toggleNavbar);
   document.addEventListener("astro:page-load", toggleNavbar, { once: false });
+</script>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const navbar = document.getElementById("landing-header");
+
+    if (window.scrollY > 0) {
+      navbar?.classList.add("backdrop-blur", "shadow-md");
+    } else {
+      navbar?.classList.remove("backdrop-blur", "shadow-md");
+    }
+  });
 </script>
