@@ -6,7 +6,7 @@ const { pathname } = Astro.url;
 
 let path = pathname;
 
-if (pathname[pathname.length - 1] === "/") {
+if (pathname[pathname.length - 1] === "/" && pathname !== "/") {
   path = pathname.slice(0, -1);
 }
 
