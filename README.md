@@ -2,7 +2,7 @@
 
 ## 🚀 Project Structure
 
-Inside of your Portfolio project, you'll see the following folders and files:
+Inside of Portfolio project, you'll see the following folders and files:
 
 ```text
 /
