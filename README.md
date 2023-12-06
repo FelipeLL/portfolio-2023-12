@@ -8,21 +8,30 @@ Inside of Portfolio project, you'll see the following folders and files:
 /
 ├── public/
 │   └── favicon.svg
+│   └── moon.svg
+│   └── profile.webp
+│   └── sun.svg
 ├── src/
 │   ├── components/
 │   │   └── Badge.astro
 │   │   └── Navbar.astro
-│   │   └── Cover.astro
+│   │   └── Cover.tsx
 │   │   └── Timeline.astro
+│   │   └── ToggleTheme.astro
 │   ├── icons/
 │   │   └── Bag.astro
 │   │   └── Github.astro
 │   │   └── Linkedin.astro
+│   │   └── Instagram.astro
+│   │   └── Menu.astro
+│   │   └── Resume.astro
+│   │   └── Twitter.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
 │       └── index.astro
 │       └── about.astro
+│       └── contact-me.astro
 └── package.json
 ```
 
