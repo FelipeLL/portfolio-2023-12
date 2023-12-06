@@ -27,13 +27,14 @@ const { title } = Astro.props;
     />
   </head>
   <body class="bg-slate-100 dark:bg-custom-blue-950">
-    <main
-      class="flex flex-col h-screen max-w-screen-desktop mx-auto dark:text-white"
-    >
+    <div class="flex flex-col min-h-screen">
       <Navbar />
-
-      <slot />
-    </main>
+      <main
+        class="flex items-center grow max-w-screen-desktop mx-auto dark:text-white"
+      >
+        <slot />
+      </main>
+    </div>
     <script is:inline>
       const theme = (() => {
         if (
