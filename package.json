@@ -28,6 +28,7 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/node": "^20.10.4",
     "eslint-plugin-astro": "^0.29.1",
     "prettier-plugin-astro": "^0.12.2"
   }

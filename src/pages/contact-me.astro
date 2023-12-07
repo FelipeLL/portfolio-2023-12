@@ -1,7 +1,104 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import SendIcon from "@/icons/Send.astro";
+import EmailIcon from "@/icons/Email.astro";
+import CopyIcon from "@/icons/Copy.astro";
 ---
 
 <Layout title="Contact me">
-  <h1>Contact me!</h1>
+  <section class="text-center">
+    <div>
+      <h3 class="mb-3 text-4xl font-semibold">
+        Let's talk about everything! 😎
+      </h3>
+      <p class="mb-10 text-lg text-slate-500 dark:text-slate-300">
+        Remember that you can also contact me through my social networks
+      </p>
+
+      <div class="flex items-center gap-3 mb-3">
+        <h4 class="text-xl font-semibold">Email</h4>
+        <EmailIcon className="text-slate-600 dark:text-slate-400" />
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input
+          id="email"
+          type="text"
+          disabled
+          class="bg-black/5 dark:bg-white/5 w-full py-1.5 px-3 rounded-lg grid place-items-center text-slate-600 dark:text-slate-300"
+          value="jfelipeladiino@gmail.com"
+        />
+        <button
+          id="send"
+          class="py-2 px-4 rounded-lg text-white bg-custom-blue-500 dark:bg-custom-blue-600/90 hover:bg-custom-blue-600 dark:hover:bg-custom-blue-700/90 cursor-pointer"
+        >
+          <SendIcon />
+        </button>
+
+        <button
+          id="copy"
+          class="py-2 px-4 rounded-lg text-white bg-custom-blue-500 dark:bg-custom-blue-600/90 hover:bg-custom-blue-600 dark:hover:bg-custom-blue-700/90 transition duration-100 cursor-pointer"
+        >
+          <CopyIcon />
+        </button>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const email = document.getElementById("email") as HTMLInputElement;
+  const copyButton = document.getElementById("copy") as HTMLButtonElement;
+
+  copyButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(email.value);
+      disableButton();
+      activateConfetti();
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  const activateConfetti = () => {
+    (window as any).confetti({
+      particleCount: 150,
+      spread: 90,
+    });
+  };
+
+  const disableButton = () => {
+    copyButton.disabled = true;
+    copyButton.classList.add(
+      "bg-slate-400",
+      "dark:bg-slate-500",
+      "hover:bg-slate-400",
+      "dark:hover:bg-slate-500",
+    );
+    setTimeout(() => {
+      copyButton.disabled = false;
+      copyButton.classList.remove(
+        "bg-slate-400",
+        "dark:bg-slate-500",
+        "hover:bg-slate-400",
+        "dark:hover:bg-slate-500",
+      );
+    }, 3000);
+  };
+</script>
+
+<script>
+  const email = document.getElementById("email") as HTMLInputElement;
+  const sendButton = document.getElementById("send");
+
+  sendButton?.addEventListener("click", async () => {
+    const to = email.value;
+    const subject = "Let's talk";
+    const body = "I'm interested in talking with you 😃";
+
+    const mailToLink = `mailto:${to}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailToLink;
+  });
+</script>
