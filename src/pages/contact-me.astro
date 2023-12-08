@@ -47,58 +47,17 @@ import CopyIcon from "@/icons/Copy.astro";
 </Layout>
 
 <script>
-  const email = document.getElementById("email") as HTMLInputElement;
-  const copyButton = document.getElementById("copy") as HTMLButtonElement;
+  import { copyEmailtoClipboard, stopConfetti } from "@/utils/scripts";
 
-  copyButton?.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(email.value);
-      disableButton();
-      activateConfetti();
-    } catch (error) {
-      console.error(error);
-    }
+  document.addEventListener("astro:before-preparation", stopConfetti);
+
+  document.addEventListener("astro:page-load", copyEmailtoClipboard, {
+    once: false,
   });
-
-  const activateConfetti = () => {
-    (window as any).confetti({
-      particleCount: 150,
-      spread: 90,
-    });
-  };
-
-  const disableButton = () => {
-    copyButton.disabled = true;
-    copyButton.classList.add(
-      "bg-slate-400",
-      "dark:bg-slate-500",
-      "hover:bg-slate-400",
-      "dark:hover:bg-slate-500",
-    );
-    setTimeout(() => {
-      copyButton.disabled = false;
-      copyButton.classList.remove(
-        "bg-slate-400",
-        "dark:bg-slate-500",
-        "hover:bg-slate-400",
-        "dark:hover:bg-slate-500",
-      );
-    }, 3000);
-  };
 </script>
 
 <script>
-  const email = document.getElementById("email") as HTMLInputElement;
-  const sendButton = document.getElementById("send");
+  import { sendEmail } from "@/utils/scripts";
 
-  sendButton?.addEventListener("click", async () => {
-    const to = email.value;
-    const subject = "Let's talk";
-    const body = "I'm interested in talking with you 😃";
-
-    const mailToLink = `mailto:${to}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailToLink;
-  });
+  document.addEventListener("astro:page-load", sendEmail, { once: false });
 </script>
